@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="basic project setup">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/capstone_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/capstone_war_exploded.xml" afterDir="false" />
+    <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="created react app&#10;added Firebase to react app">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/claim/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone.iml" beforeDir="false" afterPath="$PROJECT_DIR$/capstone.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/firebase/Firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/firebase/Firebase.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +64,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalTools&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;ca72431bf6bc7729c82dbb19ed7a9f2c&quot;
   }
@@ -91,7 +92,8 @@
       <workItem from="1658165943223" duration="1480000" />
       <workItem from="1658167447530" duration="1633000" />
       <workItem from="1658169405601" duration="726000" />
-      <workItem from="1658171988127" duration="599000" />
+      <workItem from="1658171988127" duration="1866000" />
+      <workItem from="1658255012515" duration="1342000" />
     </task>
     <task id="LOCAL-00001" summary="spring boot architecture defined&#10;several dependencies added&#10;basic entity, service, repository, and config files created">
       <created>1658168057875</created>
@@ -107,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658168240610</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="created react app&#10;added Firebase to react app">
+      <created>1658175679037</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658175679037</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="spring boot architecture defined&#10;several dependencies added&#10;basic entity, service, repository, and config files created" />
     <MESSAGE value="basic project setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic project setup" />
+    <MESSAGE value="created react app&#10;added Firebase to react app" />
+    <option name="LAST_COMMIT_MESSAGE" value="created react app&#10;added Firebase to react app" />
   </component>
 </project>
