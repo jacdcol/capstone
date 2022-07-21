@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="created react app&#10;added Firebase to react app">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/claim/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/firebase/Firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/firebase/Firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/SignIn/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/SignIn/SignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +95,7 @@
       <workItem from="1658169405601" duration="726000" />
       <workItem from="1658171988127" duration="1866000" />
       <workItem from="1658255012515" duration="1342000" />
+      <workItem from="1658343076623" duration="619000" />
     </task>
     <task id="LOCAL-00001" summary="spring boot architecture defined&#10;several dependencies added&#10;basic entity, service, repository, and config files created">
       <created>1658168057875</created>

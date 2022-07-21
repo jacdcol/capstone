@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+//import Firebase from './components/firebase/Firebase'
+import SignIn from './components/SignIn/SignIn';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <SignIn />
   </React.StrictMode>
 );
 
