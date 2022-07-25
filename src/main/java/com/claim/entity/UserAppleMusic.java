@@ -1,18 +1,9 @@
 package com.claim.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.net.URI;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
 @Table(name = "user_apple_music")
 public class UserAppleMusic
 {
@@ -26,4 +17,31 @@ public class UserAppleMusic
 
     @Column(name = "apple_music_refresh_token")
     private URI appleMusicRefreshToken;
+    
+    public UserAppleMusic() {}
+
+	public UserAppleMusic(Integer id, URI appleMusicAccessToken, URI appleMusicRefreshToken)
+	{
+		super();
+		this.id = id;
+		this.appleMusicAccessToken = appleMusicAccessToken;
+		this.appleMusicRefreshToken = appleMusicRefreshToken;
+	}
+
+	public Integer getId()
+	{
+		return id;
+	}
+
+	public URI getAppleMusicAccessToken()
+	{
+		return appleMusicAccessToken;
+	}
+
+	public URI getAppleMusicRefreshToken()
+	{
+		return appleMusicRefreshToken;
+	}
+    
+    
 }
