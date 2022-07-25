@@ -39,18 +39,6 @@ public class UserController
     	}
     }
     
-    @RequestMapping(value="/spotify-auth", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
-    		method=RequestMethod.POST)
-    public void spotifyAuth(@RequestBody User user)
-    {
-    	SpotifyService.authorizationCodeUriSync();
-    	SpotifyService.authorizationCodeUriAsync();
-    	SpotifyService.authorizationCodeSync();
-    	SpotifyService.authorizationCodeAsync();
-    	SpotifyService.authorizationCodeRefreshSync();
-    	SpotifyService.authorizationCodeRefreshAsync();
-    }
-    
     @RequestMapping(value = "/findByEmail", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<Optional<User>> findByEmail(String email)

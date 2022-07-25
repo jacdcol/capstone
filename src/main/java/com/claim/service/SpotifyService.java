@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.concurrent.*;
 
+import net.bytebuddy.utility.RandomString;
 import org.apache.hc.core5.http.ParseException;
 
 import se.michaelthelin.spotify.SpotifyApi;
@@ -21,14 +22,16 @@ public class SpotifyService
 	private static final String clientId = "198355d84c154d1da590aa0a7f716d5b";
 	private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:8080/profile");
 	private static String code;
+	private static final String scope = "user-read-private,user-read-email";
+	private static final String state = RandomString.make(18).toUpperCase();
 	
 	private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
 			.setClientId(clientId)
 			.setRedirectUri(redirectUri)
 			.build();
 	private static final AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodePKCEUri(UserSpotify.getCodeChallenge())
-			.state("x4xkmn9pu3j6ukrs8n")
-			.scope("user-read-private,user-read-email")
+			.state(state)
+			.scope(scope)
 			.show_dialog(true)
 			.build();
 	
