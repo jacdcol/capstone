@@ -4,25 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="created react app&#10;added Firebase to react app">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_neovisionaries_nv_i18n_1_29.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_client5_httpclient5_5_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_client5_httpclient5_cache_5_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_core5_httpcore5_5_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_core5_httpcore5_h2_5_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__se_michaelthelin_spotify_spotify_web_api_java_7_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/claim/controller/AppleMusicController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/claim/controller/SpotifyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/capstone_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/capstone_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_24.xml" beforeDir="false" />
+    <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="more updates to SpotifyService class">
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/home/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/profile/Profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone.iml" beforeDir="false" afterPath="$PROJECT_DIR$/capstone.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/Profile/Profile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/SignIn/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/SignIn/SignIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/signup/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/signup/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/controller/AppleMusicController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/controller/SpotifyController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/entity/UserAppleMusic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/entity/UserAppleMusic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/entity/UserSpotify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/entity/UserSpotify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/service/AuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/service/SpotifyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/service/SpotifyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/capstone/CapstoneApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/capstone/CapstoneApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/capstone/ServletInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/capstone/ServletInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/config/ApplicationConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/config/ApplicationConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/entity/UserAppleMusic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/entity/UserAppleMusic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/entity/UserSpotify.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/entity/UserSpotify.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/service/UserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,12 +81,17 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jacob/repos/capstone/pom.xml&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jacob/claim/student_portal&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,7 +127,14 @@
       <workItem from="1658171988127" duration="1866000" />
       <workItem from="1658255012515" duration="1342000" />
       <workItem from="1658343076623" duration="619000" />
-      <workItem from="1658778993934" duration="2687000" />
+      <workItem from="1658778993934" duration="2712000" />
+      <workItem from="1658845689366" duration="1626000" />
+      <workItem from="1658930737433" duration="169000" />
+      <workItem from="1658930952275" duration="8290000" />
+      <workItem from="1659019279613" duration="3552000" />
+      <workItem from="1659103997947" duration="1212000" />
+      <workItem from="1659366467618" duration="5882000" />
+      <workItem from="1659454614492" duration="5252000" />
     </task>
     <task id="LOCAL-00001" summary="spring boot architecture defined&#10;several dependencies added&#10;basic entity, service, repository, and config files created">
       <created>1658168057875</created>
@@ -132,11 +157,23 @@
       <option name="project" value="LOCAL" />
       <updated>1658175679037</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="more updates to SpotifyService class">
+      <created>1658793128400</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1658793128400</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:javax.persistence:javax.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -150,9 +187,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="spring boot architecture defined&#10;several dependencies added&#10;basic entity, service, repository, and config files created" />
     <MESSAGE value="basic project setup" />
     <MESSAGE value="created react app&#10;added Firebase to react app" />
-    <option name="LAST_COMMIT_MESSAGE" value="created react app&#10;added Firebase to react app" />
+    <MESSAGE value="more updates to SpotifyService class" />
+    <option name="LAST_COMMIT_MESSAGE" value="more updates to SpotifyService class" />
   </component>
 </project>

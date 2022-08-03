@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-//import Firebase from './components/firebase/Firebase'
-import SignIn from './components/SignIn/SignIn';
+import Layout from './components/layout/Layout';
 import reportWebVitals from './reportWebVitals';
+import SignUp from './components/signup/SignUp';
+import SignIn from './components/SignIn/SignIn';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <SignIn />
-  </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

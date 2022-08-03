@@ -1,6 +1,7 @@
 package com.claim.controller;
 
 import com.claim.entity.User;
+import com.claim.service.AuthService;
 import com.claim.service.SpotifyService;
 import com.claim.service.UserService;
 
@@ -18,7 +19,10 @@ public class UserController
 {
     @Autowired
     UserService userService;
-    
+	@Autowired
+	SpotifyService spotifyService;
+	@Autowired
+	AuthService authService;
     @RequestMapping(value="/save", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE, 
     		method=RequestMethod.POST)
     public void submitUserDetails(@RequestBody User user) {userService.saveUser(user);}
@@ -39,7 +43,7 @@ public class UserController
     	}
     }
     
-    @RequestMapping(value = "/findByEmail", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value="/findByEmail", produces=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<Optional<User>> findByEmail(String email)
 	{
@@ -69,4 +73,22 @@ public class UserController
     		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     	}
     }
+
+//	SPOTIFY
+	@RequestMapping(value="/spotify-auth", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
+			method=RequestMethod.POST)
+	public void spotifyAuth(@RequestBody User user)
+	{
+		SpotifyService.authCodeUri();
+		SpotifyService.authCode();;
+	}
+
+	@RequestMapping(value="/spotify-refresh", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
+			method=RequestMethod.POST)
+	public void spotifyAuthRefresh()
+	{
+		SpotifyService.authCodeRefresh();
+	}
+
+//	APPLE MUSIC
 }

@@ -12,36 +12,21 @@ public class UserAppleMusic
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "apple_music_access_token")
+    /*@Column(name = "apple_music_access_token")
     private URI appleMusicAccessToken;
 
     @Column(name = "apple_music_refresh_token")
-    private URI appleMusicRefreshToken;
+    private URI appleMusicRefreshToken;*/
     
     public UserAppleMusic() {}
 
-	public UserAppleMusic(Integer id, URI appleMusicAccessToken, URI appleMusicRefreshToken)
+	public UserAppleMusic(Integer id)
 	{
-		super();
 		this.id = id;
-		this.appleMusicAccessToken = appleMusicAccessToken;
-		this.appleMusicRefreshToken = appleMusicRefreshToken;
 	}
 
 	public Integer getId()
 	{
 		return id;
 	}
-
-	public URI getAppleMusicAccessToken()
-	{
-		return appleMusicAccessToken;
-	}
-
-	public URI getAppleMusicRefreshToken()
-	{
-		return appleMusicRefreshToken;
-	}
-    
-    
 }

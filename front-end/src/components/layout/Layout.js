@@ -1,5 +1,10 @@
 import React from "react";
-import Profile from "../Profile/Profile";
+import Profile from "../profile/Profile";
+import Header from '../header/Header';
+import Home from '../home/Home';
+import SignUp from "../signup/SignUp";
+import SignIn from "../SignIn/SignIn";
+
 import { Route, withRouter } from 'react-router-dom';
 
 const Layout = () =>
@@ -20,8 +25,9 @@ const Layout = () =>
             return (
                 <div>
                     <Route exact path='/' component={Home}/>
+                    <Route path='/profile' component={Profile}/>
                     <Route path='/sign-up' component={SignUp}/>
-                    <Route path='/spotify' component={Spotify}/>
+                    <Route path='/sign-in' component={SignIn}/>
                 </div>
             )
         }

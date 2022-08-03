@@ -13,6 +13,12 @@ public class User
     @Column(name = "password")
     private String password;
 
+	@Column(name = "username")
+	private String username;
+
+	@Column(name = "name")
+	private String name;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "spotify_id")
     private UserSpotify userSpotify;
@@ -23,10 +29,12 @@ public class User
     
     public User() {}
 
-	public User(String email, String password, UserSpotify userSpotify, UserAppleMusic userAppleMusic)
+	public User(String email, String password, String username, String name, UserSpotify userSpotify, UserAppleMusic userAppleMusic)
 	{
 		this.email = email;
 		this.password = password;
+		this.username = username;
+		this.name = name;
 		this.userSpotify = userSpotify;
 		this.userAppleMusic = userAppleMusic;
 	}
@@ -35,6 +43,10 @@ public class User
 	public void setEmail(String email) {this.email = email;}
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
+	public String getUsername() {return username;}
+	public void setUsername(String username) {this.username = username;}
+	public String getName() {return name;}
+	public void setName(String name) {this.name = name;}
 	public UserSpotify getUserSpotify() {return userSpotify;}
 	public void setUserSpotify(UserSpotify userSpotify) {this.userSpotify = userSpotify;}
 	public UserAppleMusic getUserAppleMusic() {return userAppleMusic;}

@@ -17,6 +17,6 @@ public class UserService
     public void saveUser(User usr) {userRepository.save(usr);}
     public List<User> getAllUsers() {return userRepository.findAll();}
     public void deleteUserById(String email) {userRepository.deleteById(email);}
-    public User loginUser(User user) {return userRepository.login(user.getEmail(), user.getPassword());}
+    public User loginUser(User user) {return userRepository.login(user.getUsername(), user.getPassword());}
     public Optional<User> findByEmail(String email) {return userRepository.findById(email);}
 }
