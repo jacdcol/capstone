@@ -4,21 +4,26 @@ import { Link, useHistory } from 'react-router-dom';
 
 function Header()
 {
-
+    const history = useHistory();
+    const signOutHandler = () => {
+        console.log('sign out clicked');
+        localStorage.clear();
+        history.push('/');
+    }
     const toggleDisplay = () => {
         if (localStorage.getItem('loggedInUser'))
         {
             return (
-                <div className='collapse navbar-collapse' id='navbarCollapse'>
-
-                </div>
+                <form className="d-flex">
+                    <button className="btn btn-outline-success" onClick={signOutHandler} type="button">Sign Out</button>
+                </form>
             )
         }
         else
         {
             return (
-                <div className='collapse navbar-collapse' id='navbarCollapse'>
-
+                <div>
+                    <Link className='navbar-brand' to='/sign-in'>Sign In</Link>
                 </div>
             )
         }

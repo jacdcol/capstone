@@ -5,8 +5,6 @@ import React, { useState } from 'react';
 //import { useAuthState } from 'react-firebase-hooks/auth';
 //import { useCollectionData } from 'react-firebase-hooks/firestore';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { useHistory } from 'react-router-dom';
 
 
@@ -32,15 +30,17 @@ var scopes = 'user-read-private user-read-email';*/
 function SignIn()
 {
   const [signInUser, setSignInUser] = useState({ username:'', password:''})
+
   const history = useHistory();
+
   const changeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-
     const tempSignIn = {...signInUser};
     tempSignIn[name] = value;
     setSignInUser(tempSignIn);
   }
+
   const handleUserSignIn = () => {
     axios.post('http://localhost:8080/login', signInUser).then(response => {
       localStorage.setItem('loggedInUser', response.data.username);
@@ -53,7 +53,7 @@ function SignIn()
     <div>
       <div>
         <form>
-          <input className='mb-3 form-control' value={signInUser.username} onChange={changeHandler} name='username' type="username" placeholder="Enter Email or Username" aria-label='Username or Email' />
+          <input className='mb-3 form-control' value={signInUser.username} onChange={changeHandler} name='username' type="username" placeholder="Enter Username" aria-label='Username' />
           <input className='mb-3 form-control' value={signInUser.password} onChange={changeHandler} name='password' type="password" placeholder="Enter Password" aria-label='Password' />
           <button className="btn btn-outline-success" onClick={handleUserSignIn} type="button">Sign in</button>
         </form>
@@ -79,6 +79,6 @@ function SignIn()
           </Button>
         </Form>*/}
     </div>
-);
+  )
 }
 export default SignIn;

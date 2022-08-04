@@ -7,10 +7,13 @@ import java.net.URI;
 @Table(name = "user_apple_music")
 public class UserAppleMusic
 {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+    @Column(name = "email")
+    private String email;
 
     /*@Column(name = "apple_music_access_token")
     private URI appleMusicAccessToken;
@@ -20,13 +23,17 @@ public class UserAppleMusic
     
     public UserAppleMusic() {}
 
-	public UserAppleMusic(Integer id)
+	public UserAppleMusic(String email)
 	{
-		this.id = id;
+		this.email = email;
 	}
 
-	public Integer getId()
-	{
-		return id;
+	public Integer getId() {return id;}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

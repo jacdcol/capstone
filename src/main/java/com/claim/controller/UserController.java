@@ -1,6 +1,7 @@
 package com.claim.controller;
 
 import com.claim.entity.User;
+import com.claim.entity.UserSpotify;
 import com.claim.service.AuthService;
 import com.claim.service.SpotifyService;
 import com.claim.service.UserService;
@@ -23,10 +24,15 @@ public class UserController
 	SpotifyService spotifyService;
 	@Autowired
 	AuthService authService;
+	//POSTMAN SOA
     @RequestMapping(value="/save", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE, 
     		method=RequestMethod.POST)
-    public void submitUserDetails(@RequestBody User user) {userService.saveUser(user);}
-    
+    public void submitUserDetails(@RequestBody User user)
+	{
+		userService.saveUser(user);
+	}
+
+	//POSTMAN SOA
     @RequestMapping(value="/login", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
     		method=RequestMethod.POST)
     public ResponseEntity<User> handleLogin(@RequestBody User user)
@@ -43,11 +49,11 @@ public class UserController
     	}
     }
     
-    @RequestMapping(value="/findByEmail", produces=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.GET)
+    @RequestMapping(value="/findByUsername", produces=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<Optional<User>> findByEmail(String email)
+	public ResponseEntity<Optional<User>> findByUsername(String username)
 	{
-		Optional<User> findUser = userService.findByEmail(email);
+		Optional<User> findUser = userService.findByUsername(username);
 		try
 		{
 			if (findUser.isPresent()) return new ResponseEntity<>(findUser, HttpStatus.OK);
@@ -58,7 +64,8 @@ public class UserController
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-    
+
+	//POSTMAN SOA
     @RequestMapping(value="/findAllUsers", produces=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<User>> findAllUsers()
@@ -79,15 +86,17 @@ public class UserController
 			method=RequestMethod.POST)
 	public void spotifyAuth(@RequestBody User user)
 	{
-		SpotifyService.authCodeUri();
-		SpotifyService.authCode();;
+		user.setUserSpotify(new UserSpotify());
+		SpotifyService.authCodeUri(user.getUserSpotify());
+		SpotifyService.authCode(user.getUserSpotify());
+		System.out.println(user.getUserSpotify().getAuthCode());
 	}
 
 	@RequestMapping(value="/spotify-refresh", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
 			method=RequestMethod.POST)
-	public void spotifyAuthRefresh()
+	public void spotifyAuthRefresh(@RequestBody User user)
 	{
-		SpotifyService.authCodeRefresh();
+		SpotifyService.authCodeRefresh(user.getUserSpotify());
 	}
 
 //	APPLE MUSIC

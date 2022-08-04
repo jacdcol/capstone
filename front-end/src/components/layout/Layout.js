@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from "../profile/Profile";
 import Header from '../header/Header';
-import Home from '../home/Home';
+import Dashboard from '../dashboard/Dashboard';
 import SignUp from "../signup/SignUp";
 import SignIn from "../SignIn/SignIn";
 
@@ -15,8 +15,9 @@ const Layout = () =>
         {
             return (
                 <div>
-                    <Route exact path='/' component={Home}/>
+                    <Route exact path='/' component={Dashboard}/>
                     <Route path='/profile' component={Profile}/>
+                    <Route path='/dashboard' component={Dashboard}/>
                 </div>
             )
         }
@@ -24,8 +25,7 @@ const Layout = () =>
         {
             return (
                 <div>
-                    <Route exact path='/' component={Home}/>
-                    <Route path='/profile' component={Profile}/>
+                    <Route exact path='/' component={SignUp}/>
                     <Route path='/sign-up' component={SignUp}/>
                     <Route path='/sign-in' component={SignIn}/>
                 </div>

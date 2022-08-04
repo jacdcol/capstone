@@ -6,11 +6,12 @@ import Layout from './components/layout/Layout';
 import reportWebVitals from './reportWebVitals';
 import SignUp from './components/signup/SignUp';
 import SignIn from './components/SignIn/SignIn';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <SignIn />
+    <Layout />
   </BrowserRouter>
 );
 

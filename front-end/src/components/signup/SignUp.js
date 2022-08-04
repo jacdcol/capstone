@@ -9,7 +9,6 @@ function SignUp()
     const [user, setUser] = useState({
         username: '',
         name: '',
-        email:'',
         password:'',
         userSpotify:{},
         userAppleMusic:{},
@@ -44,10 +43,6 @@ function SignUp()
                 <div className='col-md-6'>
                     <label for='inputName' className='form-label'>Name</label>
                     <input name='name' value={user.name} onChange={userChange} type='text' className='form-control' id='inputName' />
-                </div>
-                <div className='col-md-6'>
-                    <label for='inputEmail' className='form-label'>Email</label>
-                    <input name='email' value={user.email} onChange={userChange} type='text' className='form-control' id='inputEmail' />
                 </div>
                 <div className='col-md-6'>
                     <label for='inputPassword' className='form-label'>Password</label>
