@@ -9,13 +9,16 @@ import { Route, withRouter } from 'react-router-dom';
 
 const Layout = () =>
 {
+    window.addEventListener("beforeunload", (ev) => {
+        localStorage.clear()
+      })
     const toggleRoutes = () =>
     {
         if(localStorage.getItem('loggedInUser'))
         {
             return (
                 <div>
-                    <Route exact path='/' component={Dashboard}/>
+                    <Route exact path='/' component={Profile}/>
                     <Route path='/profile' component={Profile}/>
                     <Route path='/dashboard' component={Dashboard}/>
                 </div>

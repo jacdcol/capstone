@@ -38,7 +38,12 @@ public class UserController
     	User userLogin = userService.loginUser(user);
     	try
     	{
-    		if (userLogin != null) return new ResponseEntity<>(userLogin, HttpStatus.OK);
+    		if (userLogin != null)
+			{
+				SpotifyService.refreshInstance(userLogin.getUserSpotify());
+				System.out.println("state : " + userLogin.getUserSpotify().getState());
+				return new ResponseEntity<>(userLogin, HttpStatus.OK);
+			}
     		else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     	}
     	catch (Exception r)

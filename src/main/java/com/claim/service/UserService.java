@@ -1,6 +1,7 @@
 package com.claim.service;
 
 import com.claim.entity.User;
+import com.claim.entity.UserSpotify;
 import com.claim.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,10 @@ public class UserService
         List<User> userList = userRepository.findAll();
         for (User usr : userList)
         {
-            if (usr.getUserSpotify().getState().equals(state)) return usr;
+            if (usr.getUserSpotify() != null)
+            {
+                if (usr.getUserSpotify().getState().equals(state)) return usr;
+            }
         }
         return null;
     }

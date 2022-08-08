@@ -14,7 +14,7 @@ import java.net.URI;
 public class UserSpotify
 {
     @Id
-    @Column(name = "spotify-id")
+    @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
@@ -72,6 +72,12 @@ public class UserSpotify
     public String getRefreshToken() {return refreshToken;}
     public void setRefreshToken(String refreshToken) {this.refreshToken = refreshToken;}
     public String getState() {return state;}
+    public void resetState() {this.state = RandomString.make(18).toUpperCase();}
     public String getCodeVerifier() {return codeVerifier;}
+    public void resetCodeVerifier()
+    {
+        this.codeVerifier = AuthService.generateCodeVerifier();
+        this.codeChallenge = AuthService.generateCodeChallenge(this.codeVerifier);
+    }
     public String getCodeChallenge() {return codeChallenge;}
 }

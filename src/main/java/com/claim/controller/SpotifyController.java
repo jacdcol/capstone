@@ -8,6 +8,7 @@ import com.claim.service.SpotifyService;
 import com.claim.service.UserService;
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +20,13 @@ import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCrede
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERequest;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(value="/spotify-api")
 public class SpotifyController
 {
@@ -36,23 +40,31 @@ public class SpotifyController
             .setRedirectUri(redirectUri)
             .build();
 
-    @RequestMapping(value="/{auth-code-uri}", produces= MediaType.APPLICATION_JSON_VALUE, method= RequestMethod.GET)
+    @RequestMapping(value="/auth-code-uri", produces=MediaType.APPLICATION_JSON_VALUE, method= RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> getSpotifyAuthCodeUri(User user)
+    public ResponseEntity<String> getSpotifyAuthCodeUri(String username)
     {
+        Optional<User> user = userService.findByUsername(username);
         try
         {
-            user.setUserSpotify(new UserSpotify());
-            AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodePKCEUri(user.getUserSpotify().getCodeChallenge())
-                    .state(user.getUserSpotify().getState())
+            String state = "";
+            String codeChallenge = "";
+            String authCode = "";
+            if (user.isPresent()) state = user.get().getUserSpotify().getState();
+            if (user.isPresent()) codeChallenge = user.get().getUserSpotify().getCodeChallenge();
+
+            AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodePKCEUri(codeChallenge)
+                    .state(state)
                     .scope(scope)
                     .show_dialog(true)
                     .build();
             final URI uri = authorizationCodeUriRequest.execute();
             System.out.println("URI = " + uri.toString());
-            user.getUserSpotify().setAuthCode(uri.toString());
-            System.out.println(user.getUserSpotify().getAuthCode());
-            return new ResponseEntity<>(user.getUserSpotify().getAuthCode(), HttpStatus.OK);
+            user.ifPresent(value -> System.out.println(value.getName()));
+            user.ifPresent(value -> value.getUserSpotify().setAuthCode(uri.toString()));
+            if (user.isPresent()) authCode = user.get().getUserSpotify().getAuthCode();
+            System.out.println(authCode);
+            return new ResponseEntity<>(authCode, HttpStatus.OK);
         }
         catch(Exception e)
         {
@@ -62,22 +74,25 @@ public class SpotifyController
 
     @RequestMapping(value="/callback", produces=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> getToken(@RequestParam("code") String code, @RequestParam("state") String state)
+    public ResponseEntity<String> getToken(String code, String state, HttpServletResponse response)
     {
         User usr = userService.findUserByState(state);
+        System.out.println(usr.getName());
+        System.out.println(state);
+        System.out.println(code);
+        AuthorizationCodePKCERequest authorizationCodePKCERequest = spotifyApi.authorizationCodePKCE(code,
+                usr.getUserSpotify().getCodeVerifier()).build();
         try
         {
-            AuthorizationCodePKCERequest authorizationCodePKCERequest = spotifyApi.authorizationCodePKCE(usr.getUserSpotify().getAuthCode(),
-                    usr.getUserSpotify().getCodeVerifier()).build();
             final AuthorizationCodeCredentials authorizationCodeCredentials = authorizationCodePKCERequest.execute();
             //
             SpotifyService.updateTokens(usr.getUserSpotify(), spotifyApi, authorizationCodeCredentials);
-            System.out.println(code);
-            System.out.println(state);
-            return new ResponseEntity<>(code, HttpStatus.OK);
+            response.sendRedirect("http://localhost:3000/dashboard");
+            return new ResponseEntity<>(HttpStatus.FOUND);
         }
         catch (IOException | SpotifyWebApiException | ParseException e)
         {
+            System.out.println("error : " + e.getMessage());
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         catch (NullPointerException n)
@@ -85,6 +100,7 @@ public class SpotifyController
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
     }
+
 
     /*@RequestMapping(value="/spotify-refresh", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
             method=RequestMethod.POST)

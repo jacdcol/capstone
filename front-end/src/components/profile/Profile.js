@@ -18,7 +18,7 @@ const Profile = () => {
         });
     }, []
     );
-    const signInWithSpotify = () =>
+    {/*const signInWithSpotify = () =>
     {
         axios.post('http://localhost:8080/spotify-auth', user).then((response) => {
             console.log(response)
@@ -28,11 +28,23 @@ const Profile = () => {
             console.log('Authentication Request Failed' + error)
         })
         signInWithSpotifyAsync()
-    }
-    const signInWithSpotifyAsync = () =>
+    }*/}
+    const signInWithSpotify = () =>
     {
-        axios.get('http://localhost:8080/spotify-api/auth-code-uri', user)
+        const params = {
+            username: localStorage.getItem('loggedInUser')
+        }
+        console.log(user.username)
+        axios.get('http://localhost:8080/spotify-api/auth-code-uri', { params })
         .then(response => {
+            window.location.replace(response.data);
+        })
+    }
+    const callbackRedirect = async () =>
+    {
+        await axios.get('http://localhost:8080/spotify-api/callback')
+        .then(response => {
+            console.log('hello anyone there')
             window.location.replace(response.data);
         })
     }
@@ -45,7 +57,7 @@ const Profile = () => {
     {
         return (
             <div className='Profile'>
-                <button onClick={signInWithSpotifyAsync}>Sign in with Spotify</button>
+                <button onClick={signInWithSpotify}>Sign in with Spotify</button>
                 <button onClick={signInWithAppleMusic}>Sign in with Apple Music</button>
             </div>
         );
