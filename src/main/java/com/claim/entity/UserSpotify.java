@@ -14,7 +14,7 @@ import java.net.URI;
 public class UserSpotify
 {
     @Id
-    @Column(name = "id")
+    @Column(name = "spotify-id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 

@@ -6,8 +6,10 @@ import com.claim.service.AuthService;
 import com.claim.service.SpotifyService;
 import com.claim.service.UserService;
 
+import java.net.URI;
 import java.util.*;
 
+import org.aspectj.apache.bcel.classfile.Code;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,15 +17,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class UserController
 {
     @Autowired
     UserService userService;
-	@Autowired
-	SpotifyService spotifyService;
-	@Autowired
-	AuthService authService;
 	//POSTMAN SOA
     @RequestMapping(value="/save", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE, 
     		method=RequestMethod.POST)
@@ -80,24 +78,4 @@ public class UserController
     		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     	}
     }
-
-//	SPOTIFY
-	@RequestMapping(value="/spotify-auth", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
-			method=RequestMethod.POST)
-	public void spotifyAuth(@RequestBody User user)
-	{
-		user.setUserSpotify(new UserSpotify());
-		SpotifyService.authCodeUri(user.getUserSpotify());
-		SpotifyService.authCode(user.getUserSpotify());
-		System.out.println(user.getUserSpotify().getAuthCode());
-	}
-
-	@RequestMapping(value="/spotify-refresh", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
-			method=RequestMethod.POST)
-	public void spotifyAuthRefresh(@RequestBody User user)
-	{
-		SpotifyService.authCodeRefresh(user.getUserSpotify());
-	}
-
-//	APPLE MUSIC
 }

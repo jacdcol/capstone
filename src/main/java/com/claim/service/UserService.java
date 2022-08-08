@@ -19,4 +19,13 @@ public class UserService
     public void deleteUserById(String email) {userRepository.deleteById(email);}
     public User loginUser(User user) {return userRepository.login(user.getUsername(), user.getPassword());}
     public Optional<User> findByUsername(String username) {return userRepository.findById(username);}
+    public User findUserByState(String state)
+    {
+        List<User> userList = userRepository.findAll();
+        for (User usr : userList)
+        {
+            if (usr.getUserSpotify().getState().equals(state)) return usr;
+        }
+        return null;
+    }
 }

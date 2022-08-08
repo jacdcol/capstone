@@ -29,14 +29,13 @@ import java.util.concurrent.CompletionException;
 @Service
 public class AuthService
 {
-    public static String authorizationCodeUriSync(AuthorizationCodeUriRequest authorizationCodeUriRequest)
+    /*public static String authorizationCodeUriSync(AuthorizationCodeUriRequest authorizationCodeUriRequest)
     {
 
-        final URI uri = authorizationCodeUriRequest.execute();
-        System.out.println("URI = " + uri.toString());
+
         return uri.toString();
-    }
-    public static String authorizationCodeUriAsync(AuthorizationCodeUriRequest authorizationCodeUriRequest)
+    }*/
+    /*public static String authorizationCodeUriAsync(AuthorizationCodeUriRequest authorizationCodeUriRequest)
     {
         try
         {
@@ -123,15 +122,8 @@ public class AuthService
         {
             System.out.println("ASYNC operation cancelled");
         }
-    }
-    public static void updateTokens(UserSpotify userSpotify, SpotifyApi spotifyApi, AuthorizationCodeCredentials authorizationCodeCredentials)
-    {
-        spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
-        userSpotify.setAccessToken(authorizationCodeCredentials.getAccessToken());
-        spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
-        userSpotify.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
-        System.out.println("Expires in : " + authorizationCodeCredentials.getExpiresIn());
-    }
+    }*/
+
 	public static String generateCodeVerifier()
     {
     	SecureRandom secureRandom = new SecureRandom();

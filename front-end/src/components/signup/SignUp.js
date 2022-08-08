@@ -37,19 +37,19 @@ function SignUp()
             <form className='row g-3'>
                 <h2>Sign Up</h2>
                 <div className='col-md-6'>
-                    <label for='inputUsername' className='form-label'>Username</label>
+                    <label htmlFor='inputUsername' className='form-label'>Username</label>
                     <input name='username' value={user.username} onChange={userChange} type='text' className='form-control' id='inputUsername' />
                 </div>
                 <div className='col-md-6'>
-                    <label for='inputName' className='form-label'>Name</label>
+                    <label htmlFor='inputName' className='form-label'>Name</label>
                     <input name='name' value={user.name} onChange={userChange} type='text' className='form-control' id='inputName' />
                 </div>
                 <div className='col-md-6'>
-                    <label for='inputPassword' className='form-label'>Password</label>
+                    <label htmlFor='inputPassword' className='form-label'>Password</label>
                     <input name='password' value={user.password} onChange={userChange} type='password' className='form-control' id='inputPassword' />
                 </div>
                 {/*<div className='col-md-6'>
-                    <label for='inputFirstName' className='form-label'>Repeat Password</label>
+                    <label htmlFor='inputFirstName' className='form-label'>Repeat Password</label>
                     <input name='firstName' value={user.firstName} onChange={userChange} type='text' className='form-control' id='inputFirstName' />
                 </div>*/}
                 <div className="d-grid gap-2 ">
