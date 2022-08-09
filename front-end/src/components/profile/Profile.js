@@ -40,14 +40,6 @@ const Profile = () => {
             window.location.replace(response.data);
         })
     }
-    const callbackRedirect = async () =>
-    {
-        await axios.get('http://localhost:8080/spotify-api/callback')
-        .then(response => {
-            console.log('hello anyone there')
-            window.location.replace(response.data);
-        })
-    }
     const signInWithAppleMusic = () =>
     {
 

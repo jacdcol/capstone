@@ -8,7 +8,8 @@ import com.claim.service.SpotifyService;
 import com.claim.service.UserService;
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
+import se.michaelthelin.spotify.model_objects.specification.Paging;
+import se.michaelthelin.spotify.model_objects.specification.Track;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERequest;
+import se.michaelthelin.spotify.requests.data.personalization.simplified.GetUsersTopTracksRequest;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -98,6 +100,31 @@ public class SpotifyController
         catch (NullPointerException n)
         {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+        }
+    }
+
+    @RequestMapping(value="/get-top-tracks", produces=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Track[]> getTopTracks(String username)
+    {
+        Optional<User> user = userService.findByUsername(username);
+        user.ifPresent(value -> System.out.println(value.getName()));
+        GetUsersTopTracksRequest getUsersTopTracksRequest = spotifyApi.getUsersTopTracks()
+                .limit(1)
+                .offset(0)
+                .time_range("long_term")
+                .build();
+        try
+        {
+            user.ifPresent(value -> spotifyApi.setAccessToken(value.getUserSpotify().getAccessToken()));
+            final Paging<Track> trackPaging = getUsersTopTracksRequest.execute();
+            System.out.println("success");
+            return new ResponseEntity<>(trackPaging.getItems(), HttpStatus.OK);
+        }
+        catch (IOException | SpotifyWebApiException | ParseException e)
+        {
+            System.out.println("error : " + e.getMessage());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
 
