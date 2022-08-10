@@ -61,11 +61,11 @@ public class SpotifyController
                     .show_dialog(true)
                     .build();
             final URI uri = authorizationCodeUriRequest.execute();
-            System.out.println("URI = " + uri.toString());
-            user.ifPresent(value -> System.out.println(value.getName()));
+            //System.out.println("URI = " + uri.toString());
+            //user.ifPresent(value -> System.out.println(value.getName()));
             user.ifPresent(value -> value.getUserSpotify().setAuthCode(uri.toString()));
             if (user.isPresent()) authCode = user.get().getUserSpotify().getAuthCode();
-            System.out.println(authCode);
+            //System.out.println(authCode);
             return new ResponseEntity<>(authCode, HttpStatus.OK);
         }
         catch(Exception e)
@@ -79,9 +79,9 @@ public class SpotifyController
     public ResponseEntity<String> getToken(String code, String state, HttpServletResponse response)
     {
         User usr = userService.findUserByState(state);
-        System.out.println(usr.getName());
-        System.out.println(state);
-        System.out.println(code);
+        //System.out.println(usr.getName());
+        //System.out.println(state);
+        //System.out.println(code);
         AuthorizationCodePKCERequest authorizationCodePKCERequest = spotifyApi.authorizationCodePKCE(code,
                 usr.getUserSpotify().getCodeVerifier()).build();
         try
@@ -107,18 +107,21 @@ public class SpotifyController
     @ResponseBody
     public ResponseEntity<Track[]> getTopTracks(String username)
     {
+
+        System.out.println("track req received");
         Optional<User> user = userService.findByUsername(username);
-        user.ifPresent(value -> System.out.println(value.getName()));
         GetUsersTopTracksRequest getUsersTopTracksRequest = spotifyApi.getUsersTopTracks()
-                .limit(1)
+                .limit(10)
                 .offset(0)
                 .time_range("long_term")
                 .build();
         try
         {
             user.ifPresent(value -> spotifyApi.setAccessToken(value.getUserSpotify().getAccessToken()));
+            user.ifPresent(value -> System.out.println(value.getName()));
             final Paging<Track> trackPaging = getUsersTopTracksRequest.execute();
-            System.out.println("success");
+            System.out.println("tracks received");
+            user.ifPresent(value -> SpotifyService.refreshAccessToken(value.getUserSpotify(), spotifyApi));
             return new ResponseEntity<>(trackPaging.getItems(), HttpStatus.OK);
         }
         catch (IOException | SpotifyWebApiException | ParseException e)

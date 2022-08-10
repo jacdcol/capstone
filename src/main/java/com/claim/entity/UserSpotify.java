@@ -38,9 +38,6 @@ public class UserSpotify
 
     @Column(name = "code_challenge")
     private String codeChallenge;
-
-	//@OneToOne(cascade = CascadeType.ALL)
-	//private TopTracks topTracks;
     
     public UserSpotify()
     {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import UserTopFiftyTracks from '../usertoptracks/UserTopFiftyTracks';
+import UserTopTenTracks from '../usertoptracks/UserTopTenTracks';
 
 const Dashboard = () =>
 {
@@ -35,19 +35,7 @@ const Dashboard = () =>
                 <h1>Dashboard</h1>
             </div>
             <div>
-                {userTopTracks ? (
-                    userTopTracks.map(track => {
-                        return (
-                            <div key={ track.id }>
-                                { track.name }
-                                { track.artists.name }
-                            </div>
-                        )
-                    })
-                ):
-                (
-                    <h1>loading</h1>
-                )}
+                { UserTopTenTracks(userTopTracks) }
             </div>
         </div>
     )

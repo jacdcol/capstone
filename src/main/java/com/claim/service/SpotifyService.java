@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.SpotifyHttpManager;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERefreshRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERequest;
 
+import java.io.IOException;import org.apache.hc.core5.http.ParseException;
 import java.net.URI;
 import java.util.*;
 
@@ -36,11 +38,23 @@ public class SpotifyService
 		userSpotify.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
 		System.out.println("Expires in : " + authorizationCodeCredentials.getExpiresIn());
 	}
-	/*
-	public static void authCodeRefresh(UserSpotify userSpotify)
+
+	public static void refreshAccessToken(UserSpotify userSpotify, SpotifyApi spotifyApi)
 	{
 		AuthorizationCodePKCERefreshRequest authorizationCodePKCERefreshRequest = spotifyApi.authorizationCodePKCERefresh().build();
-		AuthService.authorizationCodeRefreshSync(userSpotify, spotifyApi, authorizationCodePKCERefreshRequest);
-		AuthService.authorizationCodeRefreshAsync(userSpotify, spotifyApi, authorizationCodePKCERefreshRequest);
-	}*/
+		try
+		{
+			final AuthorizationCodeCredentials authorizationCodeCredentials = authorizationCodePKCERefreshRequest.execute();
+			//
+			updateTokens(userSpotify, spotifyApi, authorizationCodeCredentials);
+			System.out.println("token refreshed");
+
+		}
+		catch (IOException | SpotifyWebApiException | ParseException e)
+		{
+			System.out.println("Error: " + e.getMessage());
+		}
+		//AuthService.authorizationCodeRefreshSync(userSpotify, spotifyApi, authorizationCodePKCERefreshRequest);
+		//AuthService.authorizationCodeRefreshAsync(userSpotify, spotifyApi, authorizationCodePKCERefreshRequest);
+	}
 }
