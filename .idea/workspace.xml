@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="user now redirected back to dashboard after authorizing spotify&#10;access token acquired by controller class">
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/usertoptracks/UserTopTenTracks.js" afterDir="false" />
+    <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="Display user top tracks on dashboard">
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/usertoptracks/UserTopTracks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/usertoptracks/UserTopFiftyTracks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/controller/SpotifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/controller/SpotifyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/entity/UserSpotify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/entity/UserSpotify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/service/SpotifyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/service/SpotifyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/entity/UserSpotify.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/entity/UserSpotify.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/usertoptracks/UserTopTenTracks.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +120,7 @@
       <workItem from="1659825026758" duration="2507000" />
       <workItem from="1659915122020" duration="6056000" />
       <workItem from="1659968753530" duration="18729000" />
-      <workItem from="1660062254797" duration="12004000" />
+      <workItem from="1660062254797" duration="12934000" />
     </task>
     <task id="LOCAL-00001" summary="spring boot architecture defined&#10;several dependencies added&#10;basic entity, service, repository, and config files created">
       <created>1658168057875</created>
@@ -177,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660000814851</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Display user top tracks on dashboard">
+      <created>1660099063342</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1660099063342</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +209,7 @@
     <MESSAGE value="reorganize spotifyservice and authservice&#10;add sign up and sign in pages" />
     <MESSAGE value="add SpotifyController&#10;auth code now recieved by front, redirecting user" />
     <MESSAGE value="user now redirected back to dashboard after authorizing spotify&#10;access token acquired by controller class" />
-    <option name="LAST_COMMIT_MESSAGE" value="user now redirected back to dashboard after authorizing spotify&#10;access token acquired by controller class" />
+    <MESSAGE value="Display user top tracks on dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Display user top tracks on dashboard" />
   </component>
 </project>

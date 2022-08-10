@@ -1,12 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import UserTopTenTracks from '../usertoptracks/UserTopTenTracks';
+import UserTopTracks from '../usertoptracks/UserTopTracks';
 
 const Dashboard = () =>
 {
     const [user, setUser] = useState(0)
-    const [userTopTracks, setUserTopTracks] = useState()
+    const [tracks, setTracks] = useState()
     const history = useHistory();
 
     useEffect(() => {
@@ -23,8 +23,8 @@ const Dashboard = () =>
         axios.get('http://localhost:8080/spotify-api/get-top-tracks', { params })
         .then((response) => {
             console.log(response.data)
-            setUserTopTracks(response.data)
-            localStorage.setItem("user-top-tracks", userTopTracks)
+            setTracks(response.data)
+            localStorage.setItem("user-top-tracks", tracks)
         })
     }, []
     );
@@ -35,7 +35,7 @@ const Dashboard = () =>
                 <h1>Dashboard</h1>
             </div>
             <div>
-                { UserTopTenTracks(userTopTracks) }
+                { UserTopTracks(tracks) }
             </div>
         </div>
     )
