@@ -8,6 +8,8 @@ import com.claim.service.SpotifyService;
 import com.claim.service.UserService;
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import se.michaelthelin.spotify.model_objects.specification.Album;
+import se.michaelthelin.spotify.model_objects.specification.Artist;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERequest;
+import se.michaelthelin.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
 import se.michaelthelin.spotify.requests.data.personalization.simplified.GetUsersTopTracksRequest;
 
 import javax.servlet.http.HttpServletResponse;
@@ -111,7 +114,7 @@ public class SpotifyController
         System.out.println("track req received");
         Optional<User> user = userService.findByUsername(username);
         GetUsersTopTracksRequest getUsersTopTracksRequest = spotifyApi.getUsersTopTracks()
-                .limit(10)
+                .limit(50)
                 .offset(0)
                 .time_range("long_term")
                 .build();
@@ -131,11 +134,32 @@ public class SpotifyController
         }
     }
 
-
-    /*@RequestMapping(value="/spotify-refresh", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,
-            method=RequestMethod.POST)
-    public void spotifyAuthRefresh(@RequestBody User user)
+    @RequestMapping(value="/get-top-artists", produces=MediaType.APPLICATION_JSON_VALUE, method=RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Artist[]> getTopArtists(String username)
     {
-        SpotifyService.authCodeRefresh(user.getUserSpotify());
-    }*/
+
+        System.out.println("artists req received");
+        System.out.println(username);
+        Optional<User> user = userService.findByUsername(username);
+        GetUsersTopArtistsRequest getUsersTopArtistsRequest = spotifyApi.getUsersTopArtists()
+                .limit(50)
+                .offset(0)
+                .time_range("long_term")
+                .build();
+        try
+        {
+            user.ifPresent(value -> spotifyApi.setAccessToken(value.getUserSpotify().getAccessToken()));
+            user.ifPresent(value -> System.out.println(value.getName()));
+            final Paging<Artist> artistPaging = getUsersTopArtistsRequest.execute();
+            System.out.println("artists received");
+            user.ifPresent(value -> SpotifyService.refreshAccessToken(value.getUserSpotify(), spotifyApi));
+            return new ResponseEntity<>(artistPaging.getItems(), HttpStatus.OK);
+        }
+        catch (IOException | SpotifyWebApiException | ParseException e)
+        {
+            System.out.println("error : " + e.getMessage());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
 }

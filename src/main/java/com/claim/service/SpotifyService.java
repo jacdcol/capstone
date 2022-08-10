@@ -54,7 +54,5 @@ public class SpotifyService
 		{
 			System.out.println("Error: " + e.getMessage());
 		}
-		//AuthService.authorizationCodeRefreshSync(userSpotify, spotifyApi, authorizationCodePKCERefreshRequest);
-		//AuthService.authorizationCodeRefreshAsync(userSpotify, spotifyApi, authorizationCodePKCERefreshRequest);
 	}
 }

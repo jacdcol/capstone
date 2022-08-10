@@ -18,6 +18,25 @@ function Header()
                 </form>
             )
         }
+        else if ((localStorage.getItem('loggedInUser')) && localStorage.getItem('spotifyConnected'))
+        {
+            return (
+                <div>
+                    <div>
+                        <Link className='navbar-brand' to='/dashboard'>Top Tracks</Link>
+                    </div>
+                    <div>
+                        <Link className='navbar-brand' to='/dashboard/artists'>Top Artists</Link>
+                    </div>
+                    <div>
+                        <Link className='navbar-brand' to='/dashboard/albums'>Top Albums</Link>
+                    </div>
+                    <form className="d-flex">
+                        <button className="btn btn-outline-success" onClick={signOutHandler} type="button">Sign Out</button>
+                    </form>
+                </div>
+            )
+        }
         else
         {
             return (

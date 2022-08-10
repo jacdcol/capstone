@@ -25,6 +25,7 @@ function SignUp()
     const userSignUp = () => {
         axios.post('http://192.168.0.184:8080/save', user).then((response) => {
             localStorage.setItem('loggedInUser', response.data.tempUser)
+            localStorage.setItem('spotifyConnected', false)
             history.push('/profile');
         }).catch((error) => {
             console.log('User does not exist');
