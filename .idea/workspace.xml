@@ -4,16 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="Table displays multiple artists when necessary on dashboard">
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/usertop/UserTopArtists.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/src/components/usertop/UserTopTracks.js" afterDir="false" />
+    <list default="true" id="4c1e7631-2e9e-42bd-a772-664bb5e13ce0" name="Changes" comment="Display api data on both tabs of dashboard page">
+      <change afterPath="$PROJECT_DIR$/front-end/src/components/authlanding/AuthLanding.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/SignIn/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/SignIn/SignIn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/dashboard/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/profile/Profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/src/components/signup/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/signup/SignUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/components/usertoptracks/UserTopTracks.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/usertop/UserTopArtists.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/usertop/UserTopArtists.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/components/usertop/UserTopTracks.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/components/usertop/UserTopTracks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/controller/SpotifyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/controller/SpotifyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/entity/UserAppleMusic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/service/AuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/claim/service/SpotifyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/claim/service/SpotifyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/claim/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/claim/entity/UserAppleMusic.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +135,8 @@
       <workItem from="1659915122020" duration="6056000" />
       <workItem from="1659968753530" duration="18729000" />
       <workItem from="1660062254797" duration="13596000" />
-      <workItem from="1660145173432" duration="6501000" />
+      <workItem from="1660145173432" duration="12668000" />
+      <workItem from="1660229970000" duration="9730000" />
     </task>
     <task id="LOCAL-00001" summary="spring boot architecture defined&#10;several dependencies added&#10;basic entity, service, repository, and config files created">
       <created>1658168057875</created>
@@ -191,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660101739953</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Display api data on both tabs of dashboard page">
+      <created>1660169870312</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1660169870312</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +241,7 @@
     <MESSAGE value="user now redirected back to dashboard after authorizing spotify&#10;access token acquired by controller class" />
     <MESSAGE value="Display user top tracks on dashboard" />
     <MESSAGE value="Table displays multiple artists when necessary on dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Table displays multiple artists when necessary on dashboard" />
+    <MESSAGE value="Display api data on both tabs of dashboard page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Display api data on both tabs of dashboard page" />
   </component>
 </project>

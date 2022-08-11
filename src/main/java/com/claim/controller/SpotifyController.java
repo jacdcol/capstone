@@ -49,6 +49,7 @@ public class SpotifyController
     @ResponseBody
     public ResponseEntity<String> getSpotifyAuthCodeUri(String username)
     {
+        System.out.println(username);
         Optional<User> user = userService.findByUsername(username);
         try
         {
@@ -68,7 +69,7 @@ public class SpotifyController
             //user.ifPresent(value -> System.out.println(value.getName()));
             user.ifPresent(value -> value.getUserSpotify().setAuthCode(uri.toString()));
             if (user.isPresent()) authCode = user.get().getUserSpotify().getAuthCode();
-            //System.out.println(authCode);
+            System.out.println(authCode);
             return new ResponseEntity<>(authCode, HttpStatus.OK);
         }
         catch(Exception e)
@@ -82,9 +83,6 @@ public class SpotifyController
     public ResponseEntity<String> getToken(String code, String state, HttpServletResponse response)
     {
         User usr = userService.findUserByState(state);
-        //System.out.println(usr.getName());
-        //System.out.println(state);
-        //System.out.println(code);
         AuthorizationCodePKCERequest authorizationCodePKCERequest = spotifyApi.authorizationCodePKCE(code,
                 usr.getUserSpotify().getCodeVerifier()).build();
         try

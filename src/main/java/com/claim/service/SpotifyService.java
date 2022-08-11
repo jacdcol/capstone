@@ -1,23 +1,15 @@
 package com.claim.service;
 
-import com.claim.entity.User;
 import com.claim.entity.UserSpotify;
 import com.claim.repository.UserRepository;
-import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.michaelthelin.spotify.SpotifyApi;
-import se.michaelthelin.spotify.SpotifyHttpManager;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
-import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERefreshRequest;
-import se.michaelthelin.spotify.requests.authorization.authorization_code.pkce.AuthorizationCodePKCERequest;
 
 import java.io.IOException;import org.apache.hc.core5.http.ParseException;
-import java.net.URI;
-import java.util.*;
-
 @Service
 public class SpotifyService
 {

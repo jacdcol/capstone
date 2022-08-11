@@ -9,41 +9,73 @@ const Dashboard = () =>
 {
     const [user, setUser] = useState('')
     const [key, setKey] = useState('tracks')
+    const [artists, setArtists] = useState()
+    const [tracks, setTracks] = useState()
 
     useEffect(() => {
         const params = {
             username: localStorage.getItem('loggedInUser')
         }
-        setUser( params['username'] )
-        {/*axios.get('http://localhost:8080/findByUsername', { params })
-        .then((response) => {
-            setUser(response.data)
-            localStorage.setItem('spotifyConnected', true)
-            console.log(user.username)
-            console.log(response.data.username)
-        }).catch(error => {
-            console.log('error' + error)
-        });
-        console.log(localStorage.getItem('loggedInUser'))
-    console.log(params)*/}
-        
-    }, []
+        if (key === 'artists')
+        {
+            artistReq({ params })
+        }
+        else
+        {
+            trackReq({ params })
+        }
+    }, [key]
     );
-    console.log(user)
+    async function artistReq(props)
+    {
+        console.log(props)
+        try
+        {
+            await axios.get('http://localhost:8080/spotify-api/get-top-artists', props)
+            .then((response) => {
+                console.log(response.data)
+                setArtists(response.data)
+            })
+        }
+        catch(err)
+        {
+            console.log(err)
+        }
+    }
+    async function trackReq(props)
+    {
+        console.log(props)
+        try
+        {
+            await axios.get('http://localhost:8080/spotify-api/get-top-tracks', props)
+            .then((response) => {
+                console.log(response.data)
+                setTracks(response.data)
+            })
+        }
+        catch(err)
+        {
+            console.log(err)
+        }
+        console.log(tracks)
+    }
     return(
-        <Tabs
+        <div>
+            <Tabs
             id='dashboard-tabs'
             activeKey={key}
             onSelect={(k) => setKey(k)}
             className='mb-3'
         >
-            <Tab eventKey='tracks' title='Tracks'>
-                { UserTopTracks() }
+            <Tab eventKey='tracks' onClick={ trackReq } title='Tracks'>
+                { UserTopTracks(tracks) }
             </Tab>
-            <Tab eventKey='artists' title='Artists'>
-                { UserTopArtists() }
+            <Tab eventKey='artists' onClick={ artistReq } title='Artists'>
+                { UserTopArtists(artists) }
             </Tab>
         </Tabs>
+        </div>
+        
     )
 }
 export default Dashboard;

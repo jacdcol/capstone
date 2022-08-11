@@ -29,17 +29,7 @@ const Profile = () => {
         })
         signInWithSpotifyAsync()
     }*/}
-    const signInWithSpotify = () =>
-    {
-        const params = {
-            username: localStorage.getItem('loggedInUser')
-        }
-        console.log(user.username)
-        axios.get('http://localhost:8080/spotify-api/auth-code-uri', { params })
-        .then(response => {
-            window.location.replace(response.data);
-        })
-    }
+    
     const signInWithAppleMusic = () =>
     {
 
@@ -47,12 +37,7 @@ const Profile = () => {
 
     if ((!localStorage.getItem('spotifyConnected')) && (!localStorage.getItem('appleMusicConnected')))
     {
-        return (
-            <div className='Profile'>
-                <button onClick={signInWithSpotify}>Sign in with Spotify</button>
-                <button onClick={signInWithAppleMusic}>Sign in with Apple Music</button>
-            </div>
-        );
+        
     }
     else
     {

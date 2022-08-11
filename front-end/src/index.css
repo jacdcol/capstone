@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-form {
+  background: #8afff5;
+  padding: 1.5em;
+  border-radius: 1em;
+}
+
+.primary-img {
+  object-fit:fill;
+}
+
+.artist-card {
+  display: flex;
+  width: 75%;
+  flex-direction: row;
+  border: 1px solid #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  border-radius: 5px;
+}
+
+.auth-landing {
+  width: 100%;
+  text-align: center;
+}

@@ -1,55 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 
-const UserTopArtists = () =>
+const UserTopArtists = (props) =>
 {
-    const [artists, setArtists] = useState()
-    useEffect(() => {
-        artistReq()
-    }, []
-    );
-    async function artistReq()
-    {
-        const params = {
-            username: localStorage.getItem('loggedInUser')
-        }
-        try
-        {
-            await axios.get('http://localhost:8080/spotify-api/get-top-artists', { params })
-            .then((response) => {
-                console.log(response.data)
-                setArtists(response.data)
-            })
-        }
-        catch(err)
-        {
-            console.log(err)
-        }
-    }
     {/*put cards on this page! with pictures and genres*/}
     return (
-        <Table borderless>
+        <div>
+            {props ? (
+                props.map(artist => {
+                    return (
+                        <CardGroup key={ artist.id }>
+                            <Card className='artist-card'>
+                                <Card.Img className='primary-img' src={ artist.images[0].url }/>
+                            </Card>
+                            <Card>
+                                    <Card.Body>
+                                        <Card.Text>{ artist.name }</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Text>{ artist.genres[0] }</Card.Text>
+                                        <Card.Text>{ artist.genres[1] }</Card.Text>
+                                        <Card.Text>{ artist.genres[2] }</Card.Text>
+                                        <Card.Text>{ artist.genres[3] }</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                        </CardGroup>
+                    )
+                })
+            ):
+            (
+                <Card><Card.Body><Card.Text>loading top artists...</Card.Text></Card.Body></Card>
+            )}
+        </div>
+    )
+}
+export default UserTopArtists;
+{/*<Table borderless>
             <thead>
                 <tr>
                     <th>Name</th>
                 </tr>
             </thead>
             <tbody>
-                {artists ? (
-                    artists.map(artist => {
-                        return (
-                            <tr key={ artist.id }>
-                                <td>{ artist.name }</td>
-                            </tr>
-                        )
-                    })
-                ):
-                (
-                    <tr><td>'loading'</td></tr>
-                )}
+                
             </tbody>
-        </Table>
-    )
-}
-export default UserTopArtists;
+                </Table>*/}

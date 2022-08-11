@@ -1,32 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 
-const UserTopTracks = () =>
+const UserTopTracks = (props) =>
 {
-    const [tracks, setTracks] = useState()
-    useEffect(() => {
-        trackReq()
-    }, []
-    );
-    async function trackReq()
-    {
-        const params = {
-            username: localStorage.getItem('loggedInUser')
-        }
-        try
-        {
-            await axios.get('http://localhost:8080/spotify-api/get-top-tracks', { params })
-            .then((response) => {
-                console.log(response.data)
-                setTracks(response.data)
-            })
-        }
-        catch(err)
-        {
-            console.log(err)
-        }
-    }
+    
     const mapArtists = (props) => {
         return (
             props.map(artist => <span>{ artist.name }</span>)
@@ -36,31 +15,33 @@ const UserTopTracks = () =>
         )
     }
     return (
-        <Table borderless>
-            <thead>
-                <tr>
-                    <th>Track</th>
-                    <th>Artist(s)</th>
-                    <th>Album</th>
-                </tr>
-            </thead>
-            <tbody>
-                {tracks ? (
-                    tracks.map(track => {
-                        return (
-                            <tr key={ track.id }>
-                                <td>{ track.name }</td>
-                                <td>{ mapArtists(track.artists) }</td>
-                                <td>{ track.album.name }</td>
-                            </tr>
-                        )
-                    })
-                ):
-                (
-                    <tr><td>'loading'</td></tr>
-                )}
-            </tbody>
-        </Table>
+        <div>
+            <CardGroup>
+                <Card><Card.Body><Card.Text><b>Track</b></Card.Text></Card.Body></Card>
+                <Card><Card.Body><Card.Text><b>Artist(s)</b></Card.Text></Card.Body></Card>
+                <Card><Card.Body><Card.Text><b>Album</b></Card.Text></Card.Body></Card>
+            </CardGroup>
+            {props ? (
+                props.map(track => {
+                    return (
+                        <CardGroup key={ track.id }>
+                                <Card>
+                                    <Card.Body><Card.Text>{ track.name }</Card.Text></Card.Body>
+                                </Card>
+                                <Card>
+                                    <Card.Body><Card.Text>{ mapArtists(track.artists) }</Card.Text></Card.Body>
+                                </Card>
+                                <Card>
+                                    <Card.Body><Card.Text>{ track.album.name }</Card.Text></Card.Body>
+                                </Card>
+                        </CardGroup>
+                    )
+                })
+            ):
+            (
+                <Card><Card.Body><Card.Text>loading top tracks...</Card.Text></Card.Body></Card>
+            )}
+        </div>
     )
 }
 export default UserTopTracks;

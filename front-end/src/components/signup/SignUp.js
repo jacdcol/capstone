@@ -10,8 +10,7 @@ function SignUp()
         username: '',
         name: '',
         password:'',
-        userSpotify:{},
-        userAppleMusic:{},
+        userSpotify:{}
     })
 
     const userChange = (event) => {
@@ -23,10 +22,16 @@ function SignUp()
     }
 
     const userSignUp = () => {
+        console.log(user)
         axios.post('http://192.168.0.184:8080/save', user).then((response) => {
-            localStorage.setItem('loggedInUser', response.data.tempUser)
-            localStorage.setItem('spotifyConnected', false)
-            history.push('/profile');
+            console.log(user.username)
+            localStorage.setItem('loggedInUser', user.username)
+            axios.post('http://localhost:8080/login', user).then(response => {
+                localStorage.setItem('loggedInUser', response.data.username);
+                history.push('/');
+            }).catch((error) => {
+                console.log('invalid' + error);
+            })
         }).catch((error) => {
             console.log('User does not exist');
         })
@@ -49,12 +54,8 @@ function SignUp()
                     <label htmlFor='inputPassword' className='form-label'>Password</label>
                     <input name='password' value={user.password} onChange={userChange} type='password' className='form-control' id='inputPassword' />
                 </div>
-                {/*<div className='col-md-6'>
-                    <label htmlFor='inputFirstName' className='form-label'>Repeat Password</label>
-                    <input name='firstName' value={user.firstName} onChange={userChange} type='text' className='form-control' id='inputFirstName' />
-                </div>*/}
                 <div className="d-grid gap-2 ">
-                    <button onClick={userSignUp} className="bg-dark btn btn-outline-success" type="button">Sign up</button>
+                    <button onClick={userSignUp} className="bg-dark btn btn-outline-success" type="button">Sign up and Authorize Spotify</button>
                 </div>
             </form>
         </div>

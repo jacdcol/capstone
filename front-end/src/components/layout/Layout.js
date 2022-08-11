@@ -4,7 +4,7 @@ import Header from '../header/Header';
 import Dashboard from '../dashboard/Dashboard';
 import SignUp from "../signup/SignUp";
 import SignIn from "../SignIn/SignIn";
-
+import AuthLanding from "../authlanding/AuthLanding";
 import { Route, withRouter } from 'react-router-dom';
 
 const Layout = () =>
@@ -18,8 +18,7 @@ const Layout = () =>
         {
             return (
                 <div>
-                    <Route exact path='/' component={Profile}/>
-                    <Route path='/profile' component={Profile}/>
+                    <Route exact path='/' component={AuthLanding}/>
                     <Route path='/dashboard' component={Dashboard}/>
                 </div>
             )
